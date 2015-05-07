@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'uri'
+require 'faker'
 
 describe "IndexController" do
 
