@@ -7,7 +7,7 @@ describe "/users" do
                 email: Faker::Internet.email,
                 password: Faker::Internet.password(8))
     end
-    @current_user = 1
+    @current_user = User.all.first.id
     @session = {"rack.session" => {user: @current_user}}
   end
 
@@ -29,10 +29,10 @@ describe "/users" do
     end
   end
 
-  describe "POST /users" do
+  describe "POST /users/follow" do
     before do
-      @user_id_to_follow = 2
-      post "/users/#{@user_id_to_follow}"
+      @user_id_to_follow = User.all.last.id
+      post "/users/follow/#{@user_id_to_follow}", {}, @session
     end
 
     it "adds specified user to current user's 'followees'" do
