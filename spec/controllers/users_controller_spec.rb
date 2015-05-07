@@ -35,12 +35,24 @@ describe "/users" do
       post "/users/follow/#{@user_id_to_follow}", {}, @session
     end
 
+# DELETE >>>>>>>>>>>>>>>>>>>>>>>>
+    # it "adds specified user to current user's 'followees'" do
+    #   expect(Connection.all).to be 42
+    # end
+    # it "adds specified user to current user's 'followees'" do
+    #   expect(User.all).to eq(42)
+    # end
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     it "adds specified user to current user's 'followees'" do
-      expect(User.find(@current_user).followees).to include(User.find(@user_id_to_follow))
+      current_user = User.find_by(id: @current_user)
+      followed_user = User.find_by(id: @user_id_to_follow)
+      expect(current_user.followees).to include(followed_user)
     end
   end
 
   after do
     User.destroy_all
+    Connection.destroy_all
   end
 end
