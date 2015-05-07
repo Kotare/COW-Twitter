@@ -7,11 +7,13 @@ describe "/users" do
                 email: Faker::Internet.email,
                 password: Faker::Internet.password(8))
     end
+    @current_user = 1
+    @session = {"rack.session" => {user: @current_user}}
   end
 
   describe "GET /users" do
     before do
-      get "/users"
+      get "/users", {}, @session
     end
 
     it "returns HTTP status code 200" do
@@ -29,13 +31,12 @@ describe "/users" do
 
   describe "POST /users" do
     before do
-      @user_id_to_follow = 1
-      @current_user_id = 2
+      @user_id_to_follow = 2
       post "/users/#{@user_id_to_follow}"
     end
 
     it "adds specified user to current user's 'followees'" do
-      expect(User.find(@current_user_id).followees).to include(User.find(@user_id_to_follow))
+      expect(User.find(@current_user).followees).to include(User.find(@user_id_to_follow))
     end
   end
 

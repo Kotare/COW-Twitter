@@ -4,11 +4,12 @@
   <table>
     <% if @users %>
       <% @users.each do |user| %>
+        <% (@current_user.followees.include?(user)) ? connection_change = 'unfollow' : connection_change = 'follow' %>
         <tr>
           <td><%= user.username %></td>
           <td>
-            <form  action='/users/#{user.id}' method='post'>
-              <input type='submit' value='Follow'/>
+            <form  action="/users/#{connection_change}/#{user.id}" method='post'>
+              <input type='submit' value="#{connection_change}" />
             </form>
           </td>
         </tr>
