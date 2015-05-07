@@ -21,3 +21,12 @@ get '/sign_out' do
   session.delete(:user)
   redirect '/'
 end
+
+get '/sign_up' do
+  erb :sign_in
+end
+
+post '/sign_up' do
+  @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+  erb :sign_in
+end
