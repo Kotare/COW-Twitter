@@ -7,7 +7,7 @@ get '/' do
 end
 
 post '/sign_in' do
-  @user = User.find_by(email: params[:email])
+  @user = User.find_by(username: params[:username])
   if @user.password != params[:password]
     @failed_message = "Sorry, Access Denied!"
     erb :sign_in
