@@ -13,6 +13,7 @@ require 'rack/test'
 require 'capybara'
 require 'capybara/rspec'
 require 'faker'
+require 'pp'
 
 def session
   last_request.env['rack.session']
