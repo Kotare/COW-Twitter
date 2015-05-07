@@ -6,8 +6,9 @@
 </div>
 <div class="container"
   <% if @tweets%>
+  <%= @tweets %>
 	<ul>
-      <% @tweets.each do |t| %>
+      <% @tweets.each do |tweet| %>
     	<li> <a href="/tweet/<%=tweet.user.username%>" ><%= "#{tweet.content}" %></a></li>
  		<%end%>
  	  </ul>
