@@ -12,7 +12,8 @@ post '/sign_in' do
     @failed_message = "Sorry, Access Denied!"
     erb :sign_in
   else
-    session[:user] = @user
+    session[:user] = @user.id
+    @tweets = Tweet.all
     erb :index
   end
 end
