@@ -1,9 +1,9 @@
 
  <div class="container">
  	<h1>COW -Twitter</h1>
-		<%=@user.email%>
+		<%=@user.email if @user%>
 		<li> <a href="/sign_out"</a></li>
-		<form action ='/sign_out' method = 'post'>
+		<form action ='/sign_out' method = 'get'>
 		 Logout:
 		<br><input type="submit" value"Log out"><br>
 	</form>
@@ -14,7 +14,8 @@
       <% @tweets.each do |t| %>
     	<li> <a href="/tweets/<%=tweet.user.username%>" ><%= "#{tweet.content}" %></a></li>
  		<%end%>
- 	</ul>
+ 	  </ul>
+  <%end%>
  	<form action="/tweets" method="post">
  	content:
  	<br><input type="text" name="content">

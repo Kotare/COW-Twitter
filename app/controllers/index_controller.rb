@@ -8,12 +8,12 @@ end
 
 post '/sign_in' do
   @user = User.find_by(email: params[:email])
-  if params[:password] == @user.password
-    session[:user] = @user
-    erb :index
-  else
+  if @user.password != params[:password]
     @failed_message = "Sorry, Access Denied!"
     erb :sign_in
+  else
+    session[:user] = @user
+    erb :index
   end
 end
 
