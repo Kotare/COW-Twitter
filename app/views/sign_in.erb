@@ -1,0 +1,25 @@
+<div class="container">
+	<h1>Sign in</h1>
+	<form action = '/sign_in' method = 'post'>
+		User name:
+		<br><br><input type="text" name="user name"><br>
+		email :
+		<br><input type="text" name="email"><br>
+		password:
+		<br><input type="password" name="password"><br>
+		<input type="submit" value="Log in">
+	</form>
+	<p><%=@failed_message%>/p>
+</div>
+<h1>Sign up</h1>
+<div class="container">
+	<form action = '/sign_up' method = "get">
+	  user name:
+	  <br><input type="text" name="user name"><br>
+	  email:
+	  <br><input type="text" name="email"><br>
+	  password:
+	  <br><input type="text" name="password"><br>
+	 <input type="submit" value="Sign up">
+	</form>
+</div>
