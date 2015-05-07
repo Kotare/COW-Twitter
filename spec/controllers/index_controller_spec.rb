@@ -32,13 +32,13 @@ describe "IndexController" do
       expect(last_response.status).to eq(200)
     end
 
-    # it "renders the index page" do
-    #   expect(last_response.body).to include("Logout:")
-    # end
+    it "renders the index page" do
+      expect(last_response.body).to include("Logout:")
+    end
 
-    # after do
-    #   User.destroy_all
-    # end
+    after do
+      User.destroy_all
+    end
   end
 
 end
