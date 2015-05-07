@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'uri'
 
-describe "TwitterController" do
+describe "IndexController" do
 
   describe "GET '/'" do
 
