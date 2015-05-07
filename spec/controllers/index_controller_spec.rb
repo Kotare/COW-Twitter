@@ -24,7 +24,7 @@ describe "IndexController" do
     end
 
     it "renders the sign-in / sign-up view" do
-      expect(last_response.body).to include("password")
+      expect(last_response.body).to include("Password:")
     end
 
   end
@@ -46,9 +46,51 @@ describe "IndexController" do
       expect(last_response.body).to include("Logout:")
     end
 
-    after do
-      User.destroy_all
+  end
+
+  describe "GET '/sign_out'" do
+
+    before do
+      get '/sign_out', {}, @session
     end
+
+    it "returns an HTTP status code of 302" do
+      expect(last_response.status).to eq(302)
+    end
+
+    it "redirects the user to GET /" do
+      expect(URI(last_response.location).path).to eq('/')
+    end
+
+    # it "renders the sign-in / sign-up view" do
+    #   expect(last_response.body).to include("Password:")
+    # end
+
+  end
+
+  describe "POST '/sign_up'" do
+
+    before do
+      @valid_params = {username: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password}
+      post "/sign_up", @valid_params , @session
+    end
+
+    it "returns an HTTP status code of 200" do
+      expect(last_response.status).to eq(200)
+    end
+
+    it "renders the sign-in view" do
+      expect(last_response.body).to include("Password:")
+     end
+
+    it "creates a new user with given params" do
+      expect(User.find_by(username: @valid_params[:username], email: @valid_params[:email], password: @valid_params[:password])).to be_truthy
+    end
+
+  end
+
+  after do
+    User.destroy_all
   end
 
 end
