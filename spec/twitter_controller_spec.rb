@@ -14,7 +14,7 @@ describe "TwitterController" do
     end
 
     it  "renders the sign-in / sign-up view" do
-      expect(last_response.body).to include("Password")
+      expect(last_response.body).to include("password")
     end
 
   end
