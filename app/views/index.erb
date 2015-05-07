@@ -9,8 +9,20 @@
 	</form>
 </div>
 <div class="container"
-	<% if @user%>
-    	<% @user.each do |u| %>
+  <% if @tweets%>
+	<ul>
+      <% @tweets.each do |t| %>
+    	<li> <a href="/tweets/<%=tweet.user.username%>" ><%= "#{tweet.content}" %></a></li>
+ 		<%end%>
+ 	</ul>
+ 	<form action="/tweets" method="post">
+ 	content:
+ 	<br><input type="text" name="content">
+ 	<br><input type="submit" name="create post">
+ </form>
+</div>
 
- <%end%>
+
+
+
 
