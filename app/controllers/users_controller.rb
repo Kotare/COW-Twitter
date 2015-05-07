@@ -1,6 +1,8 @@
 
 get '/users' do
+  pp User.all
   @users = User.all
+  pp session
   @current_user = User.find(session[:user])
   erb :users
 end
