@@ -11,4 +11,11 @@ User.all.each do |user|
   followed_users.each do |followee|
     Connection.create(follower_id: user.id, followee_id: followee.id)
   end
+  Connection.create(follower_id: user.id, followee_id: user.id)
+end
+
+User.all.each do |user|
+  8.times do
+    Tweet.create({content: Faker::Lorem.sentence, user_id: user.id})
+  end
 end
