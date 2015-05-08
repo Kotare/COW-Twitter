@@ -13,7 +13,6 @@ get '/' do
     # @tweets.sort {|a,b|}
 
     erb :index
-
   else
     @failed_message = session[:flash]
     erb :sign_in
@@ -24,11 +23,7 @@ post '/sign_in' do
   @user = User.find_by(username: params[:username])
   if @user.password != params[:password]
     session[:flash] = "Sorry, Access Denied!"
-    put '>'*50
-    pp 'failed login'
   else
-    put '>'*50
-    pp 'redirecting'
     session[:user] = @user.id
   end
   redirect "/"
