@@ -1,23 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Sign in to Twitter</title>
+	<link href="public/css/application.css" rel="stylesheet">
+	<link href="public/css/normalize.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<h1>COW:tweet</h1>
 <div class="container">
-	<h1>Sign in</h1>
+	<form class="form-signin">
+	<h2 class="form-signin-heading">Please sign in</h2>
 	<form action = '/sign_in' method = 'post'>
 		Username:
+	 <label for="inputtext" class="sr-only"></label>
 		<br><br><input type="text" name="username"><br>
 		Password:
 		<br><input type="password" name="password"><br>
 		<input type="submit" value="Log in">
+		    <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+           </div>
+      </form>
+        </div>
+		</form>
 	</form>
 	<p><%=@failed_message%></p>
 </div>
-<h1>Sign up</h1>
+<form class="form-signin">
+<h2 class="form-signin-heading">Please sign up</h2>
 <div class="container">
 	<form action = '/sign_up' method = "post">
-	  user name:
+	  Username:
 	  <br><input type="text" name="username"><br>
-	  email:
+	  Email:
 	  <br><input type="text" name="email"><br>
-	  password:
+	  Password:
 	  <br><input type="password" name="password"><br>
 	 <input type="submit" value="Sign up">
+
 	</form>
+</body>
 </div>
+</html>
