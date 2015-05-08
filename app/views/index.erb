@@ -4,13 +4,12 @@
 		<%=@user.email if @user%>
 		<a href="/sign_out"> Logout:</a>
 </div>
-<div class="container"
-  <% if @tweets%>
-  <%= @tweets %>
-	<ul>
+<div class="container">
+  <% if @tweets %>
+	  <ul>
       <% @tweets.each do |tweet| %>
-    	<li> <a href="/tweet/<%=tweet.user.username%>" ><%= "#{tweet.content}" %></a></li>
- 		<%end%>
+    	  <li> <a href="/tweet/#{tweet.user.username}"><%=tweet.user.username%></a>  <%= "#{tweet.content}" %></li>
+ 		  <%end%>
  	  </ul>
   <%end%>
  	<form action="/tweet" method="post">
