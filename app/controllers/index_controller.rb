@@ -6,8 +6,8 @@ get '/' do
     @user.followees.each do |followee|
       followee.tweets.each {|tweet| @tweets << tweet}
     end
-    # #TODO: sort tweets by date/time
-    # @tweets.sort {|a,b|}
+    #TODO: sort tweets by date/time
+    @tweets.sort {|a,b| b.updated_at <=> a.updated_at}
 
     # @current_user_id = session[:user] ? needed
     erb :index
