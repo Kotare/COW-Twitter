@@ -1,47 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class="global-nav" data-slection-term="top_nav"/>
+    <div class="global-nav-inner"/>
+<head>
+  <meta charset="utf-8">
+  <title> Sign in to Twitter</title>
+   <link href="public/css/normalize.css" rel="stylesheet">
+  <link href="public/css/profile.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+</head>
 <div class="container">
   <h1>COW -Twitter</h1>
-
-   <ul>
+   <li>
     <li><a href="/">
       Home</a></li>
     <li><a href="/users">
       Users</a></li>
-  </ul>
+  </li>
 
   <h2><%= @selected_user.username %></h2>
   <br>
   <br>
 
   <h3><%= "#{@selected_user.username}'s Tweets" %></h3>
-  <ul>
+  <li>
   <% @selected_user.tweets.each do |tweet| %>
     <li><%= tweet.content %></li>
   <% end %>
-  </ul>
+  </li>
   <br>
   <br>
 
   <h3><%= "#{@selected_user.username}'s Followers" %></h3>
-  <ul>
+  <li>
   <% @selected_user.followers.each do |follower| %>
     <li>
       <a href="/users/profile/<%= follower.id %>">
       <%= follower.username %></a>
     </li>
   <% end %>
-  </ul>
+  </li>
   <br>
   <br>
 
   <h3><%= "Who #{@selected_user.username} is Following" %></h3>
-  <ul>
+  <li>
   <% @selected_user.followees.each do |followee| %>
     <li>
       <a href="/users/profile/<%= followee.id %>">
       <%= followee.username %></a>
     </li>
   <% end %>
-  </ul>
+  </li>
   <br>
   <br>
 </div>
+</html>

@@ -1,33 +1,28 @@
 
-<div class="container">
- 	<h1>COW -Twitter</h1>
+<link rel="stylesheet" href="/css/index.css"/>
+  <div class="global-nav" data-slection-term="top_nav"/>
+    <div class="global-nav-inner"/>
+      <div class="container"/>
 
-   <ul>
-    <li><a href="/">
-      Home</a></li>
-    <li><a href="/users">
-      Users</a></li>
-      <li><a href="/users/profile/<%= @current_user_id %>">
-      My Profile</a></li>
-  </ul>
+        <h1>COW -Twitter</h1>
+		    <%=@user.email if @user%>
+		    <a href="/sign_out"> Logout:</a>
+        <% if @tweets %>
+      	  <ul>
+            <% @tweets.each do |tweet| %>
+          	  <ul> <a href="/users/profile/<%= tweet.user.id.to_s %>"><%=tweet.user.username%></a>  <%= "#{tweet.content}" %></ul>
+       		  <%end%>
+       	  </ul>
+        <%end%>
 
-		<%=@user.email if @user%>
-		<a href="/sign_out"> Logout:</a>
-</div>
-<div class="container">
-  <% if @tweets %>
-	  <ul>
-      <% @tweets.each do |tweet| %>
-    	  <li> <a href="/tweet/#{tweet.user.username}"><%=tweet.user.username%></a>  <%= "#{tweet.content}" %></li>
- 		  <%end%>
- 	  </ul>
-  <%end%>
- 	<form action="/tweet" method="post">
- 	content:
- 	<br><input type="text" name="content">
- 	<br><input type="submit" name="create post">
-  <br><input type="hidden" name="user_id" value=<%="#{session[:user]}"%>>
- </form>
+       	<form action="/tweet" method="post">
+       	content:
+       	  <br><input type="text" name="content">
+       	  <br><input type="submit" name="create post"class="btn btn-primary sign-up-button">
+          <br><input type="hidden" name="user_id" value=<%="#{session[:user]}"%>>
+        </form>
+
+  </div>
 </div>
 
 
