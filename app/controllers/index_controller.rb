@@ -1,5 +1,6 @@
 get '/' do
   if session[:user] != nil
+    @current_user_id = session[:user]
     erb :index
   else
     erb :sign_in
