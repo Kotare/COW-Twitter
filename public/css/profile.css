@@ -1,0 +1,44 @@
+body {
+
+  background-color: #eee;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.global-nav {
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  height: 100px;
+  position: relative;
+  width: 100%;
+  color: black;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.global-nav-inner {
+  background: #E0E0E0;
+  height: 100px;
+}
+
+
+media screen and (max-width: 938px)
+.global-nav .container {
+  padding: 0;
+}
+@media screen and (max-width: 936px)
+.global-nav .container {
+  width: auto;
+  min-width: 520px;
+}
+.global-nav .container {
+  max-width: 890px;
+  text-align: center;
+  width: auto;
+}
+.container {
+  position: relative;
+  width: 890px;
+  margin: 0 auto;
+}
+
+.sign-up-button {
+  width: 134px;

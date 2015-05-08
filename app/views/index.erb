@@ -10,7 +10,7 @@
         <% if @tweets %>
       	  <ul>
             <% @tweets.each do |tweet| %>
-          	  <ul> <a href="/tweet/#{tweet.user.username}"><%=tweet.user.username%></a>  <%= "#{tweet.content}" %></ul>
+          	  <ul> <a href="/users/profile/<%= tweet.user.id.to_s %>"><%=tweet.user.username%></a>  <%= "#{tweet.content}" %></ul>
        		  <%end%>
        	  </ul>
         <%end%>
