@@ -7,7 +7,7 @@ describe "/users" do
                 email: Faker::Internet.email,
                 password: Faker::Internet.password(8))
     end
-    @current_user = 1
+    @current_user = User.all.first.id
     @session = {"rack.session" => {user: @current_user}}
   end
 
@@ -29,18 +29,30 @@ describe "/users" do
     end
   end
 
-  describe "POST /users" do
+  describe "POST /users/follow" do
     before do
-      @user_id_to_follow = 2
-      post "/users/#{@user_id_to_follow}"
+      @user_id_to_follow = User.all.last.id
+      post "/users/follow/#{@user_id_to_follow}", {}, @session
     end
 
+# DELETE >>>>>>>>>>>>>>>>>>>>>>>>
+    # it "adds specified user to current user's 'followees'" do
+    #   expect(Connection.all).to be 42
+    # end
+    # it "adds specified user to current user's 'followees'" do
+    #   expect(User.all).to eq(42)
+    # end
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     it "adds specified user to current user's 'followees'" do
-      expect(User.find(@current_user).followees).to include(User.find(@user_id_to_follow))
+      current_user = User.find_by(id: @current_user)
+      followed_user = User.find_by(id: @user_id_to_follow)
+      expect(current_user.followees).to include(followed_user)
     end
   end
 
   after do
     User.destroy_all
+    Connection.destroy_all
   end
 end
