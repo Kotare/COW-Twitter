@@ -7,10 +7,12 @@
 	<link href="public/css/normalize.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
 	<h1>COW:tweet</h1>
+
 <div class="container">
-	<form class="form-signin">
+	<div class="form-signin">
 	<h2 class="form-signin-heading">Please sign in</h2>
 	<form action = '/sign_in' method = 'post'>
 		Username:
@@ -19,21 +21,21 @@
 		Password:
 		<br><input type="password" name="password"><br>
 		<input type="submit" value="Log in">
-		    <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-           </div>
+	<div class="checkbox">
+     <label>
+      <input type="checkbox" value="remember-me"> Remember me
+      </label>
+     </div>
       </form>
-        </div>
-		</form>
-	</form>
+     </div>
+	</div>
 	<p><%=@failed_message%></p>
 </div>
-<form class="form-signin">
-<h2 class="form-signin-heading">Please sign up</h2>
-<div class="container">
-	<form action = '/sign_up' method = "post">
+
+	<div class="form-signin">
+		<h2 class="form-signin-heading">Please sign up</h2>
+		<div class="container">
+		<form action = '/sign_up' method = "post">
 	  Username:
 	  <br><input type="text" name="username"><br>
 	  Email:
@@ -42,7 +44,8 @@
 	  <br><input type="password" name="password"><br>
 	 <input type="submit" value="Sign up">
 
-	</form>
+	</div>
+
 </body>
 </div>
 </html>
