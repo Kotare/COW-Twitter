@@ -8,6 +8,8 @@ get '/' do
     end
     # #TODO: sort tweets by date/time
     # @tweets.sort {|a,b|}
+
+    # @current_user_id = session[:user] ? needed
     erb :index
 
   else

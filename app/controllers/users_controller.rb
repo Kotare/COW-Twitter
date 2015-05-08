@@ -2,6 +2,7 @@
 get '/users' do
   @users = User.all
   @current_user = User.find(session[:user])
+  @current_user_id = @current_user.id
   erb :users
 end
 
