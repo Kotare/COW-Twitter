@@ -6,10 +6,12 @@ get '/' do
     @user.followees.each do |followee|
       followee.tweets.each {|tweet| @tweets << tweet}
     end
+    @tweets = @tweets.uniq
+    # Below is for nav bar 'my profile' link finding
+    @current_user_id = session[:user]
     # #TODO: sort tweets by date/time
     # @tweets.sort {|a,b|}
 
-    # @current_user_id = session[:user] ? needed
     erb :index
 
   else
