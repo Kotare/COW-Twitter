@@ -1,6 +1,5 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
+
   background-color: #eee;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -13,7 +12,8 @@ h1 {
   font-family: 'Source Sans Pro', sans-serif;
 }
 .sign-up-button {
-  width: 130px;
+  width: 200px;
+  color: black;
 
 }
 
@@ -22,6 +22,7 @@ h1 {
   padding: 15px;
   margin: 0 auto;
 }
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;

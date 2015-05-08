@@ -15,7 +15,7 @@ body {
 }
 
 .global-nav-inner {
-  background: #fff;
+  background: #E0E0E0;
   height: 100px;
 }
 
@@ -40,4 +40,7 @@ media screen and (max-width: 938px)
   margin: 0 auto;
 }
 
+.sign-up-button {
+  width: 134px;
 
+}
