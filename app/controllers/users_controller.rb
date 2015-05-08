@@ -16,8 +16,20 @@ post "/users/follow/:user_id" do
   redirect "/users"
 end
 
+
 get '/users/profile/:user_id' do
   @selected_user = User.find(params[:user_id].to_i)
   erb :profile
+end
+
+post "/users/unfollow/:user_id" do
+  deleted_connection = Connection.where(follower_id: session[:user], followee_id: params[:user_id].to_i)
+  if deleted_connection
+    deleted_connection.destroy
+    session[:flash] = "That lame user was deleted!"
+  else
+    session[:flash] = "ERROR>?>?!"
+  end
+  redirect "/users"
 end
 
