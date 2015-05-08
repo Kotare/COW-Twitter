@@ -12,6 +12,10 @@ h1 {
   font-size:40px;
   font-family: 'Source Sans Pro', sans-serif;
 }
+.sign-up-button {
+  width: 130px;
+
+}
 
 .form-signin {
   max-width: 330px;

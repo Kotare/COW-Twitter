@@ -17,5 +17,6 @@ end
 User.all.each do |user|
   8.times do
     Tweet.create({content: Faker::Lorem.sentence, user_id: user.id})
+    sleep(0.2)
   end
 end
