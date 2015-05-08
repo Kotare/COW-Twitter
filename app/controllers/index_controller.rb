@@ -1,8 +1,19 @@
 get '/' do
   if session[:user] != nil
-    @current_user_id = session[:user]
+    @user = User.find_by(id: session[:user])
+    @tweets = []
+    @user.tweets.each {|tweet| @tweets << tweet}
+    @user.followees.each do |followee|
+      followee.tweets.each {|tweet| @tweets << tweet}
+    end
+    # #TODO: sort tweets by date/time
+    # @tweets.sort {|a,b|}
+
+    # @current_user_id = session[:user] ? needed
     erb :index
+
   else
+    @failed_message = session[:flash]
     erb :sign_in
   end
 end
@@ -10,13 +21,15 @@ end
 post '/sign_in' do
   @user = User.find_by(username: params[:username])
   if @user.password != params[:password]
-    @failed_message = "Sorry, Access Denied!"
-    erb :sign_in
+    session[:flash] = "Sorry, Access Denied!"
+    put '>'*50
+    pp 'failed login'
   else
+    put '>'*50
+    pp 'redirecting'
     session[:user] = @user.id
-    @tweets = Tweet.all
-    erb :index
   end
+  redirect "/"
 end
 
 get '/sign_out' do
