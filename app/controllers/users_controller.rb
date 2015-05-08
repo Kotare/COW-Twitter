@@ -1,6 +1,5 @@
 
 get '/users' do
-  pp session[:user]
   @users = User.all
   @current_user = User.find(session[:user])
   erb :users
@@ -15,5 +14,10 @@ post "/users/follow/:user_id" do
     session[:flash] = "ERROR>?>?!"
   end
   redirect "/users"
+end
+
+get '/users/profile/:user_id' do
+  @selected_user = User.find(params[:user_id].to_i)
+  erb :profile
 end
 

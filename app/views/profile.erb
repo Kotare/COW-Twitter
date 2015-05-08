@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>COW -Twitter</h1>
+  <br>
+  <h2><%= @selected_user.username %></h2>
+  <br>
+  <br>
+
+  <h3><%= "#{@selected_user.username}'s Tweets" %></h3>
+  <ul>
+  <% @selected_user.tweets.each do |tweet| %>
+    <li><%= tweet.content %></li>
+  <% end %>
+  </ul>
+  <br>
+  <br>
+
+  <h3><%= "#{@selected_user.username}'s Followers" %></h3>
+  <ul>
+  <% @selected_user.followers.each do |follower| %>
+    <li>
+      <a href="/users/profile/<%= follower.id %>">
+      <%= follower.username %></a>
+    </li>
+  <% end %>
+  </ul>
+  <br>
+  <br>
+
+  <h3><%= "Who #{@selected_user.username} is Following" %></h3>
+  <ul>
+  <% @selected_user.followees.each do |followee| %>
+    <li>
+      <a href="/users/profile/<%= followee.id %>">
+      <%= followee.username %></a>
+    </li>
+  <% end %>
+  </ul>
+  <br>
+  <br>
+</div>
